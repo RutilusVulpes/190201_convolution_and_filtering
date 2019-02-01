@@ -11,11 +11,13 @@ gauss = np.matrix([[1,2,1],
                    [2,4,2],
                    [1,2,1]])/16
 def convolve(h,g):
-    convolved = np.array()
+
     widthKernal = len(h)
     wBorder = int((widthKernal-1)/2)
     heightKernal = len(h[0])
     hBorder = int((heightKernal-1)/2)
+
+    convolved = np.full((len(g),len(g[0])), 0)
 
     for i in range(wBorder, len(g)-wBorder-1):
         for j in range(hBorder, len(g[i])-hBorder-1):
@@ -27,10 +29,13 @@ def convolve(h,g):
             sum = 0
             for x in np.nditer(nbhd):
                 sum = x + sum
-            g[i][j] = sum
 
-    return g
+            convolved[i][j] = sum
+            #print(g[i][j])
+    return convolved
 
 
-I_gray  = convolve(boxcar,I_gray)
+I_gray  = convolve(gauss,I_gray)
+
 plt.imshow(I_gray)
+plt.show()
