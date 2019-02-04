@@ -31,7 +31,7 @@ def gauss_kernal(size, var):
     
 I_gray_copy_box = convolve(I_gray, h_box)
 I_gray_copy_gauss = convolve(I_gray, h_gauss)
-I_gray_gauss_calc = convolve(I_gray,gauss_kernal(3,2))
+I_gray_gauss_calc = convolve(I_gray,gauss_kernal(3,.8))
 I_gray_sobel = convolve(I_gray,h_sobel)
 I_gray_sobel_trans = convolve(I_gray,h_sobel.Transpose())
 
